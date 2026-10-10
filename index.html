@@ -8,7 +8,7 @@
 <title>Vector Arm</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap">
 
 <style>
 /* Layout: one dark scroll — hero, signal marquee, about, white platform sheet, stacking roadmap cards, contact */
@@ -25,7 +25,7 @@
   --hot1:#B600A8;
   --hot2:#7621B0;
   --hot3:#BE4C00;
-  --font:'Kanit', 'Arial Narrow', system-ui, sans-serif;
+  --font:'Kanit', 'Cairo', 'Arial Narrow', system-ui, sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -81,6 +81,16 @@ a{color:inherit;text-decoration:none}
 .nav{display:flex;justify-content:space-between;gap:.75rem;padding:1.5rem 1.25rem 0;position:relative;z-index:20}
 .nav a{color:var(--ink);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;transition:opacity .2s;white-space:nowrap}
 .nav a:hover{opacity:.7}
+.nav{align-items:center}
+.lang-btn{font-family:var(--font);font-weight:700;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;min-width:2.4rem;height:2.1rem;padding:0 .7rem;font-size:.95rem;line-height:1;cursor:pointer;transition:background .2s;flex:none}
+.lang-btn:hover{background:rgba(215,226,234,.12)}
+@media (max-width:420px){.nav{gap:.5rem}.nav a{font-size:.72rem}.lang-btn{min-width:2.1rem;height:1.9rem;padding:0 .55rem;font-size:.85rem}}
+/* Arabic / RTL */
+[dir="rtl"] body *{letter-spacing:0!important}
+[dir="rtl"] .marquee,[dir="rtl"] .hero-title-wrap,[dir="rtl"] .hs,[dir="rtl"] .email,[dir="rtl"] .tile-unit{direction:ltr}
+[dir="rtl"] .marquee-cap{direction:rtl}
+[dir="rtl"] .hero-lede,[dir="rtl"] .pdesc,[dir="rtl"] .cdesc,[dir="rtl"] .anim-text,[dir="rtl"] .icell p{line-height:1.8}
+[dir="rtl"] .big-h,[dir="rtl"] .award h2,[dir="rtl"] .impact h2{line-height:1.2}
 .hero-title-wrap{overflow:hidden;padding:0 1.5rem;margin-top:1.25rem}
 .hero-title{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.9;white-space:nowrap;font-size:14vw;display:block;width:max-content;margin:0 auto}
 .hero-bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;padding:0 1.5rem 1.75rem;position:relative;z-index:20}
@@ -128,7 +138,7 @@ a{color:inherit;text-decoration:none}
 .coin canvas{display:block;width:100%!important;height:100%!important}
 .coin::before{content:"";position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle,rgba(182,0,168,.28),rgba(118,33,176,.12) 45%,transparent 70%);filter:blur(10px);pointer-events:none}
 .coin-hint{position:absolute;left:50%;bottom:.2rem;transform:translateX(-50%);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap;pointer-events:none}
-@media (min-width:768px){.award{grid-template-columns:1fr 1fr;gap:3rem;padding:7rem 2.5rem}.award-copy{text-align:left;align-items:flex-start}}
+@media (min-width:768px){.award{grid-template-columns:1fr 1fr;gap:3rem;padding:7rem 2.5rem}.award-copy{text-align:start;align-items:flex-start}}
 
 /* PLATFORM (white sheet) */
 .platform{background:var(--paper);color:var(--paper-ink);border-radius:40px 40px 0 0;padding:5rem 1.25rem 7rem}
@@ -221,6 +231,7 @@ footer strong{color:var(--ink);font-weight:500;text-transform:uppercase;letter-s
       <a href="#platform">Platform</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#contact">Contact</a>
+      <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language to Arabic">ع</button>
     </nav>
     <div class="hero-title-wrap load" style="--d:.15s;--ry:40px">
       <h1 class="hero-title hero-heading" id="heroTitle">Vector Arm</h1>
@@ -315,7 +326,7 @@ footer strong{color:var(--ink);font-weight:500;text-transform:uppercase;letter-s
     <p class="sub reveal">For partnerships, research collaboration and clinical pilots.</p>
     <div class="email-row reveal">
       <span class="email" id="email">Falsalmy27@gmail.com</span>
-      <a class="btn-hot" id="sendBtn" href="mailto:Falsalmy27@gmail.com?subject=Vector%20Arm%20inquiry&body=Hello%2C%0A%0AI%20came%20across%20Vector%20Arm%20and%20would%20like%20to%20learn%20more%20about%3A%0A%0A%5B%20%5D%20Partnership%0A%5B%20%5D%20Research%20collaboration%0A%5B%20%5D%20Clinical%20pilot%0A%5B%20%5D%20Investment%0A%0AName%3A%0AOrganization%3A%0APhone%3A%0A%0AThank%20you."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>Send email</a>
+      <a class="btn-hot" id="sendBtn" data-ar-href="mailto:Falsalmy27@gmail.com?subject=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20Vector%20Arm&body=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%0A%0A%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20Vector%20Arm%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF%20%D8%B9%D9%86%3A%0A%0A%5B%20%5D%20%D8%B4%D8%B1%D8%A7%D9%83%D8%A9%0A%5B%20%5D%20%D8%AA%D8%B9%D8%A7%D9%88%D9%86%20%D8%A8%D8%AD%D8%AB%D9%8A%0A%5B%20%5D%20%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D8%B3%D8%B1%D9%8A%D8%B1%D9%8A%D8%A9%0A%5B%20%5D%20%D8%A7%D8%B3%D8%AA%D8%AB%D9%85%D8%A7%D8%B1%0A%0A%D8%A7%D9%84%D8%A7%D8%B3%D9%85%3A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%0A%D8%A7%D9%84%D8%AC%D9%88%D8%A7%D9%84%3A%0A%0A%D8%B4%D9%83%D8%B1%D8%A7%D9%8B%20%D9%84%D9%83." href="mailto:Falsalmy27@gmail.com?subject=Vector%20Arm%20inquiry&body=Hello%2C%0A%0AI%20came%20across%20Vector%20Arm%20and%20would%20like%20to%20learn%20more%20about%3A%0A%0A%5B%20%5D%20Partnership%0A%5B%20%5D%20Research%20collaboration%0A%5B%20%5D%20Clinical%20pilot%0A%5B%20%5D%20Investment%0A%0AName%3A%0AOrganization%3A%0APhone%3A%0A%0AThank%20you."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>Send email</a>
     </div>
     <a class="btn-ghost reveal" href="https://www.linkedin.com/in/falsalmy27" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.84-2.06 3.8-2.06 4.06 0 4.84 2.67 4.84 6.15v5.31h-4v-4.7c0-1.12-.02-2.57-1.56-2.57-1.57 0-1.81 1.22-1.81 2.48v4.79h-4z"/></svg>
@@ -596,14 +607,19 @@ footer strong{color:var(--ink);font-weight:500;text-transform:uppercase;letter-s
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitle);
 
   /* ---------- animated paragraph ---------- */
-  var at=document.getElementById('animText'),chars=[];
-  var txt=at.textContent;at.textContent='';
-  txt.split(/(\s+)/).forEach(function(word){
-    if(/^\s+$/.test(word)){at.appendChild(document.createTextNode(' '));return;}
-    var w=document.createElement('span');w.style.whiteSpace='nowrap';w.style.opacity='1';
-    for(var i=0;i<word.length;i++){var s=document.createElement('span');s.textContent=word[i];w.appendChild(s);chars.push(s);}
-    at.appendChild(w);
-  });
+  var at=document.getElementById('animText'),chars=[],ANIM_EN=at.textContent.trim();
+  function buildAnim(txt,byWord){
+    at.textContent='';chars=[];
+    txt.split(/(\s+)/).forEach(function(word){
+      if(/^\s+$/.test(word)){at.appendChild(document.createTextNode(' '));return;}
+      var w=document.createElement('span');w.style.whiteSpace='nowrap';w.style.opacity='1';
+      if(byWord){var s1=document.createElement('span');s1.textContent=word;w.appendChild(s1);chars.push(s1);}
+      else for(var i=0;i<word.length;i++){var s2=document.createElement('span');s2.textContent=word[i];w.appendChild(s2);chars.push(s2);}
+      at.appendChild(w);
+    });
+    if(reduce)chars.forEach(function(c){c.style.opacity=1;});
+    }
+  buildAnim(ANIM_EN,false);
 
   /* ---------- scroll loop ---------- */
   var marquee=document.querySelector('.marquee'),roadmap=document.getElementById('roadmap'),ticking=false;
@@ -626,7 +642,6 @@ footer strong{color:var(--ink);font-weight:500;text-transform:uppercase;letter-s
   addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
   addEventListener('resize',function(){fitTitle();setCardTop();onScroll();});
   onScroll();
-  if(reduce)chars.forEach(function(c){c.style.opacity=1;});
 
   /* ---------- reveal ---------- */
   if('IntersectionObserver' in window&&!reduce){
@@ -637,6 +652,33 @@ footer strong{color:var(--ink);font-weight:500;text-transform:uppercase;letter-s
     setTimeout(function(){els.forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},1200);
   }
 
+
+  /* ---------- language toggle ---------- */
+  (function(){
+    var AR={"About": "نبذة", "Platform": "المنصة", "Roadmap": "خارطة الطريق", "Contact": "تواصل", "An AI-assisted robotic platform for rapid emergency assessment": "منصة روبوتية مدعومة بالذكاء الاصطناعي للتقييم السريع في الطوارئ", "Loading 3D model": "جارٍ تحميل النموذج ثلاثي الأبعاد", "Drag to rotate": "اسحب للتدوير", "Drag to turn": "اسحب لقلب الميدالية", "Palm · Ultrasound probe": "راحة اليد · مجس الألتراساوند", "Fingers · ECG / EIT electrodes": "الأصابع · أقطاب ECG / EIT", "One platform": "منصة واحدة", "Every signal": "كل الإشارات", "Get in touch": "تواصل معنا", "Recognition": "إنجاز", "Silver medal": "الميدالية الفضية", "Vector Arm won a silver medal at the International Exhibition of Inventions of Geneva.": "حصل Vector Arm على الميدالية الفضية في معرض جنيف الدولي للاختراعات.", "Inventions Geneva": "معرض جنيف للاختراعات", "ECG": "ECG", "Cardiac electrical activity": "النشاط الكهربائي للقلب", "Records the heart's electrical activity to flag rhythm problems and cardiac abnormalities during the first assessment.": "يسجّل النشاط الكهربائي للقلب ليكشف اضطرابات النظم والمشكلات القلبية من أول تقييم.", "Vital signs": "العلامات الحيوية", "HR · SpO₂ · BP · RR": "النبض · الأكسجين · الضغط · التنفس", "Tracks heart rate, oxygen saturation, blood pressure and respiratory rate continuously, taking repetitive measurements off the nurse's list.": "يتابع النبض وتشبّع الأكسجين وضغط الدم ومعدل التنفس باستمرار، ويخفف عن الممرض القياسات المتكررة.", "Electrical impedance tomography": "التصوير بالمقاومة الكهربائية", "EIT": "EIT", "Maps changes in tissue impedance to help detect and localise internal bleeding and other abnormal tissue changes.": "يرسم تغيّرات المقاومة الكهربائية في الأنسجة ليساعد في اكتشاف النزيف الداخلي وتحديد مكانه، وأي تغيّرات غير طبيعية في الأنسجة.", "Ultrasound": "الألتراساوند", "Probe in the palm of the gripper": "مجس في راحة القابض", "The probe sits in the palm, between the two fingers. It images targeted organs and tissue, and guides where the arm and future therapeutic equipment go next.": "المجس في راحة اليد بين الإصبعين. يصوّر الأعضاء والأنسجة المستهدفة، ويوجّه حركة الذراع والأدوات العلاجية المستقبلية.", "AI decision support": "دعم القرار بالذكاء الاصطناعي", "Multi-sensor fusion": "دمج بيانات عدة مستشعرات", "Combines every sensor stream to surface concerning patterns, so no finding rests on a single diagnostic source.": "يجمع بيانات كل المستشعرات ليبرز الأنماط المقلقة، فلا تعتمد أي نتيجة على مصدر تشخيصي واحد.", "Robotic arm": "الذراع الروبوتية", "Two-finger, four-joint gripper": "قابض بإصبعين وأربعة مفاصل", "Positions examination and future intervention tools with controlled, repeatable movement. ECG and EIT electrodes line the inner faces of the fingers, and the ultrasound probe sits in the palm between them.": "يضع أدوات الفحص والتدخل المستقبلية بحركة دقيقة وقابلة للتكرار. أقطاب ECG وEIT على الأسطح الداخلية للأصابع، ومجس الألتراساوند في راحة اليد بينهما.", "Gives care teams time back": "يعيد للفرق الطبية وقتها", "Faster first assessment": "تقييم أولي أسرع", "Several examinations run on one platform, so patients move between fewer devices and critical conditions surface sooner.": "عدة فحوصات على منصة واحدة، فيتنقل المريض بين أجهزة أقل وتظهر الحالات الحرجة أبكر.", "Less repetitive work": "عمل متكرر أقل", "Automated monitoring frees nurses for direct patient care, treatment and communication with families.": "المراقبة الآلية تفرّغ الممرضين لرعاية المرضى مباشرة والعلاج والتواصل مع الأهالي.", "Safer for staff": "أمان أكثر للطاقم", "Remote and semi-autonomous assessment reduces exposure in outbreaks, isolation wards and hazardous scenes.": "التقييم عن بُعد وشبه الذاتي يقلل التعرّض للعدوى في الأوبئة وأجنحة العزل والمواقع الخطرة.", "For partnerships, research collaboration and clinical pilots.": "للشراكات والتعاون البحثي والتجارب السريرية.", "Send email": "أرسل إيميل", "LinkedIn": "LinkedIn", "Vector Arm is a concept in development. It is not an approved medical device. Tissue detection and therapeutic functions are future research pathways, subject to clinical validation, regulatory approval and supervision by qualified healthcare professionals.": "Vector Arm مفهوم قيد التطوير، وليس جهازاً طبياً معتمداً. وظائف كشف الأنسجة والعلاج مسارات بحثية مستقبلية، تخضع للتحقق السريري والموافقات التنظيمية وإشراف مختصين صحيين مؤهلين.", "25 mm/s · 10 mm/mV": "25 mm/s · 10 mm/mV", "SpO₂": "SpO₂", "Pleth · %": "موجة النبض · %", "16 electrodes · ΔZ": "16 قطباً · ΔZ", "B-mode": "B-mode", "Blood pressure": "ضغط الدم", "mmHg": "mmHg", "Respiration": "التنفس", "breaths / min": "نفس / دقيقة", "AI fusion": "دمج بالذكاء الاصطناعي", "4 streams": "4 مصادر", "Positioning": "التموضع", "Repeatable": "قابل للتكرار", "Lead II": "Lead II", "Bleed localisation": "تحديد مكان النزيف", "Guidance": "توجيه", "Live dashboard": "لوحة البيانات الحية", "Base unit": "وحدة القاعدة", "Bedside": "عند السرير", "Remote link": "اتصال عن بُعد", "Clinician in the loop": "الطبيب مشارك في القرار", "ΔZ map": "خريطة ΔZ", "Follow-up": "متابعة", "Region of interest": "منطقة الاهتمام", "Palm-probe guided": "بتوجيه مجس الراحة", "Target": "الهدف", "Needle path": "مسار الإبرة", "Planned · palm-probe guided": "مخطط · بتوجيه مجس الراحة", "Hospitals · Ambulances": "المستشفيات · الإسعاف", "Emergency assessment": "تقييم الطوارئ", "Now": "الآن", "Rapid multi-modal assessment for trauma, chest pain, breathing difficulty and suspected internal bleeding, inside the emergency department and before the hospital.": "تقييم سريع متعدد الوسائط للإصابات وألم الصدر وصعوبة التنفس واشتباه النزيف الداخلي، داخل الطوارئ وقبل الوصول للمستشفى.", "Disaster · Remote · Outbreak": "الكوارث · المناطق النائية · الأوبئة", "Field and remote care": "الرعاية الميدانية وعن بُعد", "Next": "التالي", "Reduced-contact assessment in epidemics, isolation areas and disaster zones, operated remotely under the supervision of qualified clinicians.": "تقييم بأقل تلامس في الأوبئة ومناطق العزل والكوارث، يُشغَّل عن بُعد تحت إشراف أطباء مؤهلين.", "Research pathway": "مسار بحثي", "Early tissue detection": "الكشف المبكر عن الأنسجة", "Research": "بحث", "Studying impedance differences between healthy and abnormal tissue as an early-warning tool that tells clinicians when further testing is needed. It does not diagnose cancer.": "دراسة فروق المقاومة الكهربائية بين الأنسجة السليمة وغير الطبيعية كأداة إنذار مبكر تنبّه الأطباء متى يلزم فحص إضافي. لا يشخّص السرطان.", "Future module": "وحدة مستقبلية", "Therapeutic needle module": "وحدة الإبرة العلاجية", "Future": "مستقبلاً", "A planned module to support bleeding control under professional medical supervision. Its mechanism is still in development and subject to validation.": "وحدة مخطط لها لدعم إيقاف النزيف تحت إشراف طبي مختص. آليتها ما زالت قيد التطوير وتخضع للتحقق."}, ANIM_AR="كثير من مرضى الطوارئ يمرّون على عدة أجهزة وأخصائيين قبل ما تتضح حالتهم. Vector Arm يجمع تخطيط القلب والعلامات الحيوية والألتراساوند وقياس المقاومة الكهربائية في منصة روبوتية واحدة، فترى الفرق الطبية الصورة كاملة بشكل أسرع. صُمّم ليساعد الأطباء، لا ليحلّ محلهم.", lang='en';
+    var btn=document.getElementById('langBtn'),send=document.getElementById('sendBtn'),enHref=send.getAttribute('href');
+    var nodes=[];
+    function collect(){
+      nodes=[];var w=document.createTreeWalker(document.querySelector('main'),NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+        var p=n.parentNode;if(!p||p.closest('svg,script,style,#animText,.hero-title'))return NodeFilter.FILTER_REJECT;
+        return n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+      while(w.nextNode()){var n=w.currentNode;if(n._en===undefined)n._en=n.nodeValue;nodes.push(n);}
+    }
+    function apply(l){
+      lang=l;collect();
+      nodes.forEach(function(n){var k=n._en.trim();n.nodeValue=l==='ar'&&AR[k]?n._en.replace(k,AR[k]):n._en;});
+      document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';
+      btn.textContent=l==='ar'?'EN':'ع';btn.setAttribute('aria-label',l==='ar'?'Switch language to English':'التبديل إلى العربية');
+      send.setAttribute('href',l==='ar'?send.getAttribute('data-ar-href'):enHref);
+      buildAnim(l==='ar'?ANIM_AR:ANIM_EN,l==='ar');
+      try{localStorage.setItem('va-lang',l);}catch(e){}
+      if(typeof fitTitle==='function')fitTitle();
+      dispatchEvent(new Event('scroll'));
+    }
+    btn.addEventListener('click',function(){apply(lang==='ar'?'en':'ar');});
+    var saved=null;try{saved=localStorage.getItem('va-lang');}catch(e){}
+    if(saved==='ar')apply('ar');
+  })();
 })();
 </script>
 
